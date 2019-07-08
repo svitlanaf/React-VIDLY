@@ -9,9 +9,9 @@ const Input = ({ name, label, value, onChange }) => {
                 name={name} 
                 onChange={onChange} 
                 id={name} 
-                type="email" 
+                type="text" 
                 className="form-control" 
-                placeholder="Email" 
+                // placeholder="Email" 
             />
         </div>
     );
