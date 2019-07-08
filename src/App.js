@@ -5,8 +5,9 @@ import Customers from "./components/customers";
 import Rentals from "./components/rentals";
 import NotFound from "./components/notFound";
 import NavBar from "./components/navBar";
-import "./App.css";
 import MovieForm from "./components/movieForm";
+import LoginForm from "./components/loginForm";
+import "./App.css";
 
 class App extends Component {
   render() {
@@ -16,12 +17,13 @@ class App extends Component {
         <main className="container">
           <Switch>
             <Route path="/movies/:id" component={MovieForm} />
+            <Route path="/login" component={LoginForm} />
             <Route path="/movies" component={Movies} />
             <Route path="/customers" component={Customers} />
             <Route path="/rentals" component={Rentals} />
             <Route path="/not-found" component={NotFound} />
-            <Redirect from="/" exact to="/movies" />
             <Redirect to="/not-found" />
+            <Redirect from="/" exact to="/movies" />
           </Switch>
         </main>
       </React.Fragment>
