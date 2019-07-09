@@ -61,7 +61,7 @@ class Form extends Component {
     return (
       <Input
         type={type}
-        name="name"
+        name={name}
         value={data[name]}
         label={label}
         onChange={this.handleChange}
