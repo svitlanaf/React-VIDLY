@@ -28,7 +28,7 @@ const ListGroup = props => {
 
 ListGroup.defaultProps = {
   textProperty: "name",
-  valuePropert: "_id"
+  valueProperty: "_id"
 };
 
 export default ListGroup;
