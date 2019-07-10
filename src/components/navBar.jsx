@@ -1,57 +1,79 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { Component } from "react";
+// import { Link } from "react-router-dom";
+import {
+  MDBNavbar,
+  MDBNavbarBrand,
+  MDBNavbarNav,
+  MDBNavItem,
+  MDBNavLink,
+  MDBNavbarToggler,
+  MDBCollapse,
+  MDBFormInline,
+  MDBDropdown,
+  MDBDropdownToggle,
+  MDBDropdownMenu,
+  MDBDropdownItem
+} from "mdbreact";
 
-const NavBar = () => {
-  return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <Link className="navbar-brand" to="/">
-        Vidly
-      </Link>
-      <button
-        className="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span className="navbar-toggler-icon" />
-      </button>
-      <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        <div className="navbar-nav mr-auto">
-          <NavLink className="nav-item nav-link" to="/movies">
-            Movies
-          </NavLink>
-          <NavLink className="nav-item nav-link" to="/customers">
-            Customers
-          </NavLink>
-          <NavLink className="nav-item nav-link" to="/rentals">
-            Rentals
-          </NavLink>
-          <li className="nav-item dropdown">
-            <Link
-              className="nav-link dropdown-toggle"
-              to="#"
-              id="navbarDropdown"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              Login/Register
-            </Link>
-            <NavLink className="nav-item nav-link" to="/login">
-              Login
-            </NavLink>
-            <NavLink className="nav-item nav-link" to="/register">
-              Register
-            </NavLink>
-          </li>
-        </div>
-      </div>
-    </nav>
-  );
-};
+class NavbarPage extends Component {
+  state = {
+    isOpen: false
+  };
 
-export default NavBar;
+  toggleCollapse = () => {
+    this.setState({ isOpen: !this.state.isOpen });
+  };
+
+  render() {
+    return (
+      <MDBNavbar color="default-color" dark expand="md">
+        <MDBNavbarBrand>
+          <MDBNavLink to="/" className="white-text">
+            Vidly
+          </MDBNavLink>
+        </MDBNavbarBrand>
+        <MDBNavbarToggler onClick={this.toggleCollapse} />
+        <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
+          <MDBNavbarNav left>
+            <MDBNavItem>
+              <MDBNavLink to="/movies">Movies</MDBNavLink>
+            </MDBNavItem>
+            <MDBNavItem>
+              <MDBNavLink to="/customers">Customers</MDBNavLink>
+            </MDBNavItem>
+            <MDBNavItem>
+              <MDBNavLink to="/rentals">Rentals</MDBNavLink>
+            </MDBNavItem>
+            <MDBNavItem>
+              <MDBDropdown>
+                <MDBDropdownToggle nav caret>
+                  <span className="mr-2">Login</span>
+                </MDBDropdownToggle>
+                <MDBDropdownMenu>
+                  <MDBDropdownItem href="/login">Login</MDBDropdownItem>
+                  <MDBDropdownItem href="/register">Register</MDBDropdownItem>
+                </MDBDropdownMenu>
+              </MDBDropdown>
+            </MDBNavItem>
+          </MDBNavbarNav>
+          <MDBNavbarNav right>
+            <MDBNavItem>
+              <MDBFormInline waves>
+                <div className="md-form my-0">
+                  <input
+                    className="form-control mr-sm-2"
+                    type="text"
+                    placeholder="Search"
+                    aria-label="Search"
+                  />
+                </div>
+              </MDBFormInline>
+            </MDBNavItem>
+          </MDBNavbarNav>
+        </MDBCollapse>
+      </MDBNavbar>
+    );
+  }
+}
+
+export default NavbarPage;
