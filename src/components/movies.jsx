@@ -22,7 +22,7 @@ class Movies extends Component {
 
   async componentDidMount() {
     const { data } = await getGenres();
-    const genres = [{ _id: "" }, { name: "All Genres" }, ...data];
+    const genres = [{ _id: "", name: "All Gennres" }, ...data];
 
     const { data: movies } = await getMovies();
     this.setState({ movies, genres });
@@ -80,7 +80,7 @@ class Movies extends Component {
     else if (selectedGenre && selectedGenre._id)
       filtered = allMovies.filter(m => m.genre._id === selectedGenre._id);
 
-    const movies = paginate(currentPage, pageSize);
+    const movies = paginate(filtered, currentPage, pageSize);
 
     return { totalCount: filtered.length, data: movies };
   };
@@ -113,7 +113,7 @@ class Movies extends Component {
           <p>Showing {totalCount} movies in the database.</p>
           <SearchBox value={searchQuery} onChange={this.handleSearch} />
           <MoviesTable
-            movies={this.state.movies}
+            movies={movies}
             onLike={this.handleLike}
             onDelete={this.handleDelete}
           />

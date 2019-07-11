@@ -26,9 +26,9 @@ class NavbarPage extends Component {
 
   render() {
     return (
-      <MDBNavbar color="default-color" dark expand="md">
+      <MDBNavbar color="blue" dark expand="md">
         <MDBNavbarBrand>
-          <MDBNavLink to="/" className="white-text">
+          <MDBNavLink to="#" className="white-text">
             Vidly
           </MDBNavLink>
         </MDBNavbarBrand>

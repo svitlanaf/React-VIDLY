@@ -7,10 +7,10 @@ import { getGenres } from "../services/genreService";
 class MovieForm extends Form {
   state = {
     data: {
-      title: " ",
-      genreId: " ",
-      numberInStock: " ",
-      dailyRentalRate: " "
+      title: "",
+      genreId: "",
+      numberInStock: "",
+      dailyRentalRate: ""
     },
     genres: [],
     errors: {}
@@ -24,16 +24,16 @@ class MovieForm extends Form {
     genreId: Joi.string()
       .required()
       .label("Genre"),
-    numberInStock: Joi.string()
+    numberInStock: Joi.number()
       .required()
       .min(0)
       .max(100)
-      .label("Number In Stock"),
-    dailyRentalRate: Joi.string()
+      .label("Number in Stock"),
+    dailyRentalRate: Joi.number()
       .required()
       .min(0)
       .max(10)
-      .label("Rate")
+      .label("Daily Rental Rate")
   };
 
   async populateGenres() {
@@ -71,6 +71,7 @@ class MovieForm extends Form {
 
   doSubmit = async () => {
     await saveMovie(this.state.data);
+
     this.props.history.push("/movies");
   };
 
@@ -81,7 +82,7 @@ class MovieForm extends Form {
         <form onSubmit={this.handleSubmit}>
           {this.renderInput("title", "Title")}
           {this.renderSelect("genreId", "Genre", this.state.genres)}
-          {this.renderInput("numberInStock", "Number In Stock", "number")}
+          {this.renderInput("numberInStock", "Number in Stock", "number")}
           {this.renderInput("dailyRentalRate", "Rate")}
           {this.renderButton("Save")}
         </form>
