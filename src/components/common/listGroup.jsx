@@ -1,18 +1,4 @@
 import React from "react";
-// import {
-//   MDBNavbar,
-//   MDBNavbarBrand,
-//   MDBNavbarNav,
-//   MDBNavItem,
-//   MDBNavLink,
-//   MDBNavbarToggler,
-//   MDBCollapse,
-//   MDBFormInline,
-//   MDBDropdown,
-//   MDBDropdownToggle,
-//   MDBDropdownMenu,
-//   MDBDropdownItem
-// } from "mdbreact";
 
 const ListGroup = props => {
   const {
@@ -22,7 +8,6 @@ const ListGroup = props => {
     selectedItem,
     onItemSelect
   } = props;
-
   return (
     <ul className="list-group">
       {items.map(item => (
@@ -30,7 +15,7 @@ const ListGroup = props => {
           onClick={() => onItemSelect(item)}
           key={item[valueProperty]}
           className={
-            item === selectedItem ? "list-group-item-active" : "list-group-item"
+            item === selectedItem ? "list-group-item active" : "list-group-item"
           }
         >
           {item[textProperty]}

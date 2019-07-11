@@ -33,6 +33,7 @@ class MoviesTable extends Component {
   ];
   render() {
     const { movies } = this.props;
+
     return <Table columns={this.columns} data={movies} />;
   }
 }
